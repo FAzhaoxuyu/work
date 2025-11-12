@@ -1,0 +1,71 @@
+1.Selection Sort: Zwei Containern
+Zwei Containern, A is leer und B hat n Elemente.
+Suchen die kleinsten elemente in B und dann appenden sie nach A.
+Wenn zwei Zahlen in A gleich sind, sollen sie nebeneinander in A stehen.
+Wenn Bleer ist, ist der Vorgang fertig.
+
+Die nächsten 4 Durchläufe werden so ausgeführt:
+
+A									 B
+6 8 17                               25 32 56 25 19 66 29 20 28     (vorgegeben)
+6 8 17 19                            25 32 56 25 66 29 20 28     (19 ist das kleinste Element in B)
+6 8 17 19 20                         25 32 56 25 66 29 28        (20 ist das kleinste Element in B)
+6 8 17 19 20 25                      32 56 25 66 29 28           (25 ist das kleinste Element in B)
+6 8 17 19 20 25 25                   32 56 66 29 28              (25 ist das kleinste Element in B)
+
+fehlende Zeile: minZahl = listeUnsortiert[minpos]
+
+2. Ein Container:
+Unterschied Zum vorhrigen Ansatz: 
+Nur ein Container wird verwendet. 
+jede Runde, wird die kleinste elemente geschoben nach Links.
+4 nachfolgenden Schritte:
+
+6 8 17 56 25 19 32 66 29 25 20 29  (vorgegeben)
+6 8 17 19 56 25 32 66 29 25 20 29  (19 ist das kleinste Element im Rest)
+6 8 17 19 20 56 25 32 66 29 25 29     (20 ist das kleinste Element im Rest)
+6 8 17 19 20 25 56 32 66 29 25 29     (25 ist das kleinste Element im Rest)
+6 8 17 19 20 25 25 56 32 66 29 29     (25 ist das kleinste Element im Rest)
+
+
+3.Insersion Sort: Zwei Containern
+Nehmen die erste element von B und vergleichen mit aller element in A, dann insert.
+bis B leer ist.
+
+17 25 25 32 56           18 8 66 29 6 20 29
+
+17 18 25 25 32 56           8 66 29 6 20 29
+8 17 18 25 25 32 56           66 29 6 20 29
+8 17 18 25 25 32 56 66           29 6 20 29
+8 17 18 25 25 29 32 56 66           6 20 29
+
+
+
+
+
+3.Bubble Sort: ein Container
+Rund 1:
+vergleich die erste Zwei Elemente a und b, wenn a < b, bleiben die Reinfolge a b, sonst tauschen sie,
+vergleich b und c, c und d......die größte Zahl ist am End.
+
+Rund 2:
+vergleich wie in Runde 1, die zweite größte Zahl is am End.
+...
+...
+bis alle Elemente sortiert ist, break.
+
+
+17 25 32 25 19 8 56 29 6 20 29 66
+17 25 32 25 19 8 56 29 6 20 29 66
+17 25 25 32 19 8 56 29 6 20 29 66
+17 25 25 19 32 8 56 29 6 20 29 66
+
+promts:
+*go through all elements of a vector, 
+*two elements each round, how to go through the second round
+*is it possible to make it in one function
+*but two same for loops are duplicated
+* how to keep comparing until all elements are in a increasing order
+* is my logic correct?
+* why dont i get correct result?
+
