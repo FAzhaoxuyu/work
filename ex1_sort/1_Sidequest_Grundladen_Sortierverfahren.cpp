@@ -5,57 +5,47 @@
 #include<algorithm>
 
 
-std::list<int> SelectionSort1(std::vector<int> unsorted)
+void selectionSort(std::vector<int>& list)
 {
-	std::vector<int>::iterator first = unsorted.begin();
-	std::vector<int>::iterator last = unsorted.end();
-
-	for (size_t i = 0; i < size(unsorted); i++)
+	if (list.size() < 2) return;
+	for (auto it = list.begin(); it != list.end(); ++it)
 	{
-		std::vector<int>::iterator min_index = std::min_element(first, last);
-		std::swap(unsorted[i], *min_index);
-		++first;
+		auto minIt = std::min_element(it, list.end());
+		if (minIt != it)
+			std::swap(*it, *minIt);
 	}
-	
-	return std::list<int>(unsorted.begin(), unsorted.end());
 }
 
-std::list<int> result{};
-std::list<int>::iterator it;
-std::list<int> SelectionSort2(std::vector<int> unsorted)
+
+ void insertionSort(std::vector<int> &list)
 {
-	if (size(result) == 0)
-	{
-		result.push_back(unsorted[0]);
-		unsorted.erase(unsorted.begin());
-	}
-	for (it = result.begin(); it != result.end(); it++)
-	{
-		for (size_t i = 0; i < size(unsorted); i++) 
-		{
-			result.push_back(unsorted[0]);
-			result.sort();
-			unsorted.erase(unsorted.begin());
-		}
-		
-	}
-	return result;
+	 if (list.size() < 2) return;
+	 for (size_t i = 1; i < list.size(); i++)
+	 {
+		 const auto itCurrent = list.begin() + i;
+		 const auto insertPos = std::upper_bound(list.begin(), list.begin() + i, *itCurrent);
+		 if (itCurrent != insertPos)
+		 {
+			 std::rotate(insertPos, itCurrent, itCurrent + 1);
+		 }
+	 }
+	 
 }
-	
 
 
-std::list<int> SelectionSort3(std::vector<int> unsorted) 
+void bubbleSort(std::vector<int> &list) 
 {
-	std::size_t n = unsorted.size();
+	if (list.size() < 2) return;
+	std::size_t n = list.size();
 	bool swapped = true;
 	while (swapped) 
 	{
 		swapped = false;
 		for (size_t i = 0; i < n - 1; i++)
 		{
-			if (unsorted[i] > unsorted[i + 1])
+			if (list[i] > list[i + 1])
 			{
-				std::swap(unsorted[i], unsorted[i + 1]);
+				std::swap(list[i], list[i + 1]);
 				swapped = true;
 			}
 		}
@@ -66,40 +56,38 @@ std::list<int> SelectionSort3(std::vector<int> unsorted)
 		}
 	}
 	
-	return std::list<int>(unsorted.begin(), unsorted.end());
 }
 
+
+void printVec(std::vector<int> &list)
+{
+	for (auto element : list)
+	{
+
+		std::cout << element << " ";
+	}
+}
 
 int main()
 {
-	std::vector<int> unsorted = { 25,17,32,56,25,19,8,66,29,6,20,29 };
+	auto unsorted = { 25,17,32,56,25,19,8,66,29,6,20,29 };
+	auto list = std::vector<int>{ unsorted };
 
-	std::list<int> sorted = SelectionSort1(unsorted);
-	std::cout << "result1: ";
-	for (int value : sorted)
-	{
-		std::cout << value << " ";
-	}
+	selectionSort(list);
+	std::cout << "Selection Sort: ";
+	printVec(list);
 	std::cout << std::endl;
 
-	std::list<int> result = SelectionSort2(unsorted);
-	std::cout << "result2: ";
-	for (int value : result)
-	{
-		std::cout << value << " ";
-	}
+	insertionSort(list);
+	std::cout << "Insertion Sort: ";
+	printVec(list);
 	std::cout << std::endl;
 
-	sorted = SelectionSort3(unsorted);
-	std::cout << "result3: ";
-	for (int value : sorted)
-	{
-		std::cout << value << " ";
-	}
-
+	bubbleSort(list);
+	std::cout << "Bubble Sort: ";
+	printVec(list);
+	std::cout << std::endl;
 }
-
-
 
 
 

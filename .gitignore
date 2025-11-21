@@ -1,0 +1,31 @@
+# Visual Studio cache
+.vs/
+*.suo
+*.user
+
+# Build output
+Debug/
+Release/
+x64/
+*.obj
+*.exe
+*.ilk
+*.pdb
+*.tlog
+*.idb
+*.log
+
+# Intermediate / temp
+*.db
+*.ipch
+*.vsidx
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+
+# General
+*.tmp
+*.cache
+*.bak
+*.old
